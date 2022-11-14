@@ -1,0 +1,319 @@
+:root {
+  --bg-header: hsl(218, 17%, 62%);
+  --bg-main: hsl(233, 100%, 97%);
+  --bg-title: hsl(275, 18%, 79%);
+  --bg-sub: hsl(312, 91%, 96%);
+  
+  --ff-title: 'Staatliches', cursive;
+  --ff-text-mobile: 'Palanquin', sans-serif;
+  --ff-text-media: 'Roboto', sans-serif;
+  --ff-link: 'Open Sans', sans-serif;
+  
+  --fs-title: clamp(4rem, 1rem + 5vw, 5rem);
+  --fs-page: clamp(1.4rem, 0.5rem + 3vw, 1.8rem);
+
+  --hue: 250;
+  --fc-title: hsl(var(--hue), 0%, 100%);
+  --fc-sub: hsl(var(--hue), 17%, 35%);
+  --fc-text: hsl(var(--hue), 84%, 12%);
+  --fc-link: hsl(var(--hue), 17%, 35%);
+
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  font-family: var(--ff-title);
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  background: var(--bg-header);
+  text-align: center;
+  padding: 3.2rem 0;
+  margin-bottom: 3.2rem;
+}
+
+header img {
+  width: 13.7rem;
+  height: 13.7rem;
+  margin-bottom: 3.2rem;
+}
+
+header h1 {
+  font-size: var(--fs-title);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--fc-title);
+  background: var(--bg-title);
+  padding: 0.8rem 0;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border: 0;
+}
+
+header p {
+  display: none;
+}
+
+main {
+  margin: 0 auto;
+  padding: 0 3.5rem;
+  align-content: center;
+  max-width: 50rem;
+}
+
+.mt p {
+  font-family: var(--ff-text-mobile);
+  font-weight: 400;
+  font-size: var(--fs-page);
+  line-height: 2rem;
+  margin-bottom: 6.4rem;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.card-wrapper {
+  display: grid;
+  gap: 3.2rem;
+}
+
+.card-wrapper div:nth-child(5) {
+  display: none;
+}
+
+.card-wrapper div:nth-child(6) {
+  display: none;
+}
+
+.card-smart,
+.card-large {
+  position: relative;
+  animation-name: downtop;
+  animation-duration: 700ms;
+  animation-delay: 200ms;
+  animation-fill-mode: backwards;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.card-smart img {
+  height: 25rem;
+}
+
+.card-large img {
+  height: 45rem;
+}
+
+.card-smart img,
+.card-large img {
+  object-fit: cover;
+  border-radius: 20px;
+  transition: all 200ms;
+}
+
+.card-smart img:hover,
+.card-large img:hover {
+  transform: scale(1.05);
+}
+
+.card-smart h2,
+.card-large h2 {
+  font-weight: 400;
+  font-size: var(--fs-page);
+  line-height: 3.4rem;
+  letter-spacing: 0.05em;
+  color: var(--fc-sub);
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  background: var(--bg-sub);
+  padding: 0 2.4rem;
+  height: 3.5rem;
+  width: fit-content;
+  border-radius: 20px;
+  animation-name: topdown;
+  animation-duration: 700ms;
+  animation-delay: 400ms;
+  animation-fill-mode: backwards;
+}
+
+.sm p{
+  display: none;
+}
+
+@keyframes downtop {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes topdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+
+  header {
+    margin: 0;
+  }
+
+  header img {
+    width: 16.7rem;
+    height: 16.7rem;
+  }
+
+  main {
+    padding: 4rem 4rem;
+    max-width: 63.2rem;
+  }
+
+  main .mt p {
+    margin-bottom: 4rem;
+  }
+
+  .card-wrapper {
+    gap: 2.2rem;
+    grid-template-areas: 
+    "cardA cardB"
+    "cardD cardB"
+    "cardD cardC";
+    margin-bottom: 4rem;
+  }
+  
+  .card-wrapper div:nth-child(1) {
+    grid-area: cardA;
+  }
+  
+  .card-wrapper div:nth-child(2) {
+    grid-area: cardB;
+  }
+  
+  .card-wrapper div:nth-child(3) {
+    grid-area: cardC;
+  }
+  
+  .card-wrapper div:nth-child(4) {
+    grid-area: cardD;
+  }
+
+  .card-wrapper div:nth-child(5) {
+    grid-area: cardE;
+  }
+
+  .card-wrapper div:nth-child(6) {
+    grid-area: cardF;
+  }
+
+  .card-smart img {
+    max-width: 30rem;
+    max-height: 30rem;
+  }
+  
+  .card-large img {
+    max-width: 30rem;
+    max-height: 30rem;
+  }
+
+  .sm p {
+    display: block;
+    font-family: var(--ff-link);
+    font-weight: 400;
+    font-size: var(--fs-page);
+    line-height: 2.8rem;
+    text-align: center;
+    color: #4A4E69;
+  }
+
+  .sm p a {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 930px) {
+
+  .page {
+    display: grid;
+    grid-template-columns: 0.75fr 2fr;
+  }
+
+  header h1 {
+    letter-spacing: normal;
+  }
+
+  header p {
+    display: block;
+    max-width: 40rem;
+    padding: 0 2rem;
+    margin: 4rem auto 0;
+    font-family: var(--ff-text-media);
+    font-weight: 400;
+    font-size: var(--fs-page);
+    line-height: 2.5rem;
+    color: var(--fc-title);
+  }
+
+  main {
+    padding: 6rem;
+    max-width: none;
+  }
+
+  .card-wrapper {
+    grid-template-areas: 
+    "cardA cardB cardE"
+    "cardD cardB cardF"
+    "cardD cardC cardF";
+    margin-bottom: 5rem;
+  }
+
+  .card-wrapper div:nth-child(5) {
+    display: block;
+  }
+
+  .card-wrapper div:nth-child(6) {
+    display: block;
+  }
+
+  .card-smart img {
+    max-width: 30rem;
+    max-height: 20rem;
+  }
+  
+  .card-large img {
+    max-width: 30rem;
+    max-height: 40rem;
+  }
+
+  main h2 {
+    display: none;
+  }
+
+  main .mt {
+    display: none;
+  }
+}
